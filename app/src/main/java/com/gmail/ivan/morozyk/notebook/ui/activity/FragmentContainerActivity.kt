@@ -1,10 +1,11 @@
-package com.gmail.ivan.morozyk.notebook.ui
+package com.gmail.ivan.morozyk.notebook.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.commit
 import com.gmail.ivan.morozyk.notebook.R
 import com.gmail.ivan.morozyk.notebook.databinding.ActivityFragmentContainerBinding
+import com.gmail.ivan.morozyk.notebook.ui.fragment.NoteListFragment
 
 class FragmentContainerActivity : AppCompatActivity() {
 

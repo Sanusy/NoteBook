@@ -1,4 +1,4 @@
-package com.gmail.ivan.morozyk.notebook.ui
+package com.gmail.ivan.morozyk.notebook.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

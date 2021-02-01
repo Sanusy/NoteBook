@@ -1,20 +1,21 @@
-package com.gmail.ivan.morozyk.notebook.mvp
+package com.gmail.ivan.morozyk.notebook.mvp.contract
 
-import com.gmail.ivan.morozyk.notebook.Note
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndSingleStrategy
 import moxy.viewstate.strategy.StateStrategyType
 
-interface NoteListContract {
+interface AddNoteContract {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     interface View : MvpView {
-        fun showEmpty()
+        fun showTitleError()
 
-        fun showNotes(noteList: List<Note>)
+        fun showContentError()
+
+        fun back()
     }
 
     interface Presenter {
-        fun addToFavorite(noteId: Int)
+        fun saveNote(noteTitle: String, noteContent: String)
     }
 }

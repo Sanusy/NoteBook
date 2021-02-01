@@ -1,4 +1,4 @@
-package com.gmail.ivan.morozyk.notebook.ui
+package com.gmail.ivan.morozyk.notebook.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import com.gmail.ivan.morozyk.notebook.R
 import com.gmail.ivan.morozyk.notebook.databinding.FragmentAddNoteBinding
-import com.gmail.ivan.morozyk.notebook.mvp.AddNoteContract
-import com.gmail.ivan.morozyk.notebook.mvp.AddNotePresenter
+import com.gmail.ivan.morozyk.notebook.mvp.contract.AddNoteContract
+import com.gmail.ivan.morozyk.notebook.mvp.presenter.AddNotePresenter
 import moxy.presenter.InjectPresenter
 
 class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(), AddNoteContract.View {

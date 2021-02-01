@@ -3,6 +3,7 @@
 
     <!--  NoteList  -->
     <string name="no_notes_string">There is no notes!</string>
+    <string name="show_todos_string">Show TODOs</string>
 
     <!--  AddNote  -->
     <string name="note_title_hint">Note title</string>
@@ -10,4 +11,8 @@
     <string name="no_title_error">There is no title!</string>
     <string name="no_content_error">There is no content!</string>
 
+    <!--  ToDoList  -->
+    <string name="todo_loading_error_string">Oops! Something went wrong!</string>
+    <string name="todo_list_empty_string">There is no TODOs</string>
+    <string name="update_error_string">Update failed</string>
 </resources>
