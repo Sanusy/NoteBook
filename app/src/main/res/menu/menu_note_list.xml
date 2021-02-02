@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/show_todo_item"
-        android:title="@string/show_todos_string"/>
+        android:title="@string/note_list_show_todos_string"
+        app:showAsAction="never"/>
 
 </menu>

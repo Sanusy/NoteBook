@@ -1,6 +1,6 @@
 package com.gmail.ivan.morozyk.notebook.mvp.presenter
 
-import com.gmail.ivan.morozyk.notebook.model.App
+import com.gmail.ivan.morozyk.notebook.App
 import com.gmail.ivan.morozyk.notebook.model.data.Note
 import com.gmail.ivan.morozyk.notebook.mvp.contract.AddNoteContract
 import moxy.MvpPresenter

@@ -6,16 +6,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.gmail.ivan.morozyk.notebook.R
 import com.gmail.ivan.morozyk.notebook.databinding.ItemToDoBinding
 import com.gmail.ivan.morozyk.notebook.model.data.ToDo
-import com.gmail.ivan.morozyk.notebook.mvp.presenter.ToDoPresenter
 
-class ToDoAdapter(private val presenter: ToDoPresenter) : RecyclerView.Adapter<ToDoHolder>() {
+class ToDoAdapter(private val markAsCompletedClicked: (ToDo) -> Unit) :
+    RecyclerView.Adapter<ToDoAdapter.ToDoHolder>() {
 
     private val toDoList = ArrayList<ToDo>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ToDoHolder(
         ItemToDoBinding.inflate(
             LayoutInflater.from(parent.context), parent, false
-        ), presenter
+        )
     )
 
     override fun onBindViewHolder(holder: ToDoHolder, position: Int) {
@@ -29,28 +29,29 @@ class ToDoAdapter(private val presenter: ToDoPresenter) : RecyclerView.Adapter<T
         this.toDoList.addAll(toDoList)
         notifyDataSetChanged()
     }
-}
 
-class ToDoHolder(private val binding: ItemToDoBinding, private val presenter: ToDoPresenter) :
-    RecyclerView.ViewHolder(binding.root) {
+    inner class ToDoHolder(private val binding: ItemToDoBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    fun bind(toDo: ToDo) {
-        with(binding) {
+        fun bind(toDo: ToDo) {
+            with(binding) {
 
-            completedButton.setOnClickListener { presenter.markAsCompletedButtonClicked(toDo) }
+                completedButton.setOnClickListener { markAsCompletedClicked(toDo) }
 
-            userName.text = toDo.userId.toString()
-            todoContent.text = toDo.title
-            completedButton.setImageResource(
-                if (toDo.completed) {
-                    completedButton.isEnabled = false
-                    R.drawable.icon_done
-                } else {
-                    completedButton.isEnabled = true
-                    R.drawable.icon_todo
-                }
-            )
+                userName.text = toDo.userId.toString()
+                todoContent.text = toDo.title
+                completedButton.setImageResource(
+                    if (toDo.completed) {
+                        completedButton.isEnabled = false
+                        R.drawable.icon_done
+                    } else {
+                        completedButton.isEnabled = true
+                        R.drawable.icon_todo
+                    }
+                )
 
+            }
         }
     }
 }
+

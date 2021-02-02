@@ -31,7 +31,7 @@ class ToDoFragment : BaseFragment<FragmentToDoBinding>(), ToDoContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        adapter = ToDoAdapter(presenter)
+        adapter = ToDoAdapter { presenter.markAsCompletedButtonClicked(it) }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -50,16 +50,17 @@ class ToDoFragment : BaseFragment<FragmentToDoBinding>(), ToDoContract.View {
 
     override fun showLoadingError() {
         showErrorView()
-        binding.noToDoList.text = getString(R.string.todo_loading_error_string)
+        binding.noToDoList.text = getString(R.string.todo_list_loading_error_string)
     }
 
     override fun showUpdateError() {
-        Toast.makeText(requireContext(), R.string.update_error_string, Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(), R.string.todo_list_update_error_string, Toast.LENGTH_LONG)
+            .show()
     }
 
     override fun showEmpty() {
         showErrorView()
-        binding.noToDoList.text = getString(R.string.todo_loading_error_string)
+        binding.noToDoList.text = getString(R.string.todo_list_loading_error_string)
     }
 
     private fun showErrorView() {

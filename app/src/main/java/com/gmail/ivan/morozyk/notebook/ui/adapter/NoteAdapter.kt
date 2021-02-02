@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.gmail.ivan.morozyk.notebook.R
-import com.gmail.ivan.morozyk.notebook.model.data.Note
 import com.gmail.ivan.morozyk.notebook.databinding.ItemNoteBinding
-import com.gmail.ivan.morozyk.notebook.mvp.presenter.NoteListPresenter
+import com.gmail.ivan.morozyk.notebook.model.data.Note
 
-class NoteAdapter(private val presenter: NoteListPresenter) : RecyclerView.Adapter<NoteHolder>() {
+class NoteAdapter(private val favoriteClicked: (note: Note) -> Unit) :
+    RecyclerView.Adapter<NoteAdapter.NoteHolder>() {
 
     private val noteList = ArrayList<Note>()
 
@@ -17,9 +17,8 @@ class NoteAdapter(private val presenter: NoteListPresenter) : RecyclerView.Adapt
             LayoutInflater.from(parent.context),
             parent,
             false
-        ), presenter
+        )
     )
-
 
     override fun onBindViewHolder(holder: NoteHolder, position: Int) {
         holder.bind(noteList[position])
@@ -37,26 +36,24 @@ class NoteAdapter(private val presenter: NoteListPresenter) : RecyclerView.Adapt
         }
         notifyDataSetChanged()
     }
-}
 
-class NoteHolder(private val binding: ItemNoteBinding, private val presenter: NoteListPresenter) :
-    RecyclerView.ViewHolder(binding.root) {
+    inner class NoteHolder(private val binding: ItemNoteBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-    init {
-        binding.favoriteButton.setOnClickListener { presenter.addToFavorite(note.id) }
-    }
+        fun bind(note: Note) {
 
-    private lateinit var note: Note
+            with(binding) {
+                favoriteButton.setOnClickListener { favoriteClicked(note) }
 
-    fun bind(note: Note) {
-        this.note = note
+                noteTitleText.text = note.title
+                noteContentText.text = note.content
 
-        binding.noteTitleText.text = note.title
-        binding.noteContentText.text = note.content
-
-        binding.favoriteButton.apply {
-            setImageResource(if (note.favorite) R.drawable.icon_favorite else R.drawable.icon_add_to_favorite)
-            isEnabled = !note.favorite
+                favoriteButton.apply {
+                    setImageResource(if (note.favorite) R.drawable.icon_favorite else R.drawable.icon_add_to_favorite)
+                    isEnabled = !note.favorite
+                }
+            }
         }
     }
 }
+

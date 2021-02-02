@@ -2,17 +2,17 @@
     <string name="app_name">NoteBook</string>
 
     <!--  NoteList  -->
-    <string name="no_notes_string">There is no notes!</string>
-    <string name="show_todos_string">Show TODOs</string>
+    <string name="note_list_no_notes_string">There is no notes!</string>
+    <string name="note_list_show_todos_string">Show TODOs</string>
 
     <!--  AddNote  -->
-    <string name="note_title_hint">Note title</string>
-    <string name="enter_note_content_hint">Enter note content</string>
-    <string name="no_title_error">There is no title!</string>
-    <string name="no_content_error">There is no content!</string>
+    <string name="add_note_note_title_hint">Note title</string>
+    <string name="add_note_enter_note_content_hint">Enter note content</string>
+    <string name="add_note_no_title_error">There is no title!</string>
+    <string name="add_note_no_content_error">There is no content!</string>
 
     <!--  ToDoList  -->
-    <string name="todo_loading_error_string">Oops! Something went wrong!</string>
+    <string name="todo_list_loading_error_string">Oops! Something went wrong!</string>
     <string name="todo_list_empty_string">There is no TODOs</string>
-    <string name="update_error_string">Update failed</string>
+    <string name="todo_list_update_error_string">Update failed</string>
 </resources>

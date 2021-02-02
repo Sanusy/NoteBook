@@ -33,11 +33,11 @@ class AddNoteFragment : BaseFragment<FragmentAddNoteBinding>(), AddNoteContract.
     }
 
     override fun showTitleError() {
-        binding.noteTitle.error = getString(R.string.no_title_error)
+        binding.noteTitle.error = getString(R.string.add_note_no_title_error)
     }
 
     override fun showContentError() {
-        binding.noteContent.error = getString(R.string.no_content_error)
+        binding.noteContent.error = getString(R.string.add_note_no_content_error)
     }
 
     override fun back() {

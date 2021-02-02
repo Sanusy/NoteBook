@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.commit
 import com.gmail.ivan.morozyk.notebook.R
-import com.gmail.ivan.morozyk.notebook.model.data.Note
 import com.gmail.ivan.morozyk.notebook.databinding.FragmentNoteListBinding
+import com.gmail.ivan.morozyk.notebook.model.data.Note
 import com.gmail.ivan.morozyk.notebook.mvp.contract.NoteListContract
 import com.gmail.ivan.morozyk.notebook.mvp.presenter.NoteListPresenter
 import com.gmail.ivan.morozyk.notebook.ui.adapter.NoteAdapter
@@ -28,7 +28,7 @@ class NoteListFragment : BaseFragment<FragmentNoteListBinding>(), NoteListContra
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
 
-        adapter = NoteAdapter(presenter)
+        adapter = NoteAdapter { presenter.addToFavorite(it.id) }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

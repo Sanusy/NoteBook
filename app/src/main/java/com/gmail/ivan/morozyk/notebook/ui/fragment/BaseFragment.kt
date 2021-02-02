@@ -9,8 +9,11 @@ import moxy.MvpAppCompatFragment
 
 abstract class BaseFragment<B : ViewBinding> : MvpAppCompatFragment() {
 
-    private lateinit var _binding: B
-    val binding by ::_binding
+    private var _binding: B? = null
+    val binding: B
+        get() {
+            return _binding!!
+        }
 
     abstract fun inflateBinding(
         inflater: LayoutInflater,
@@ -24,6 +27,12 @@ abstract class BaseFragment<B : ViewBinding> : MvpAppCompatFragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflateBinding(inflater, container, false)
-        return _binding.root
+        return _binding!!.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        _binding = null
     }
 }
