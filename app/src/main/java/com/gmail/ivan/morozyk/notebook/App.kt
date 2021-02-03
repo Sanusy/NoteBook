@@ -1,12 +1,10 @@
 package com.gmail.ivan.morozyk.notebook
 
 import android.app.Application
+import com.github.kittinunf.fuel.core.FuelManager
 import com.gmail.ivan.morozyk.notebook.model.data.Note
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
-import retrofit2.Retrofit
-import retrofit2.converter.moshi.MoshiConverterFactory
-import timber.log.Timber
 
 class App : Application() {
 
@@ -19,17 +17,12 @@ class App : Application() {
 
         val noteStorage = ArrayList<Note>()
 
-        val retrofit: Retrofit =
-            Retrofit.Builder().baseUrl("https://jsonplaceholder.typicode.com/").addConverterFactory(
-                MoshiConverterFactory.create(
-                    Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
-                )
-            ).build()
+        val moshi: Moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
     }
 
     override fun onCreate() {
         super.onCreate()
 
-        Timber.plant(Timber.DebugTree())
+        FuelManager.instance.basePath = "https://jsonplaceholder.typicode.com"
     }
 }
